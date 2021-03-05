@@ -17,7 +17,7 @@
       libinput.enable = true;
 
       displayManager.sddm.enable = true;
-      desktopManager.xterm.enable = true;
+      desktopManager.plasma5.enable = true;
     };
 
     tlp.enable = true;
@@ -28,7 +28,6 @@
       enable = true;
       drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     };
-
   };
 
   hardware.bluetooth.enable = true;
