@@ -28,6 +28,14 @@
     firewall = {
       allowPing = true;
       allowedTCPPorts = [25565];
+      allowedTCPPortRanges = [ {
+        from = 1714;
+	to = 1764;
+      } ];
+      allowedUDPPortRanges = [ { 
+        from = 1714;
+        to = 1764; 
+      } ];
     };
   };
 
@@ -40,6 +48,8 @@
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "20.09";
+
+  nixpkgs.overlays = [ (import ./overlays/packages.nix) ];
 
 }
 
