@@ -8,6 +8,11 @@
     variables.EDITOR = "nvim";
   };
 
+  imports = [
+    ./modules/howdy.nix
+    ./modules/ir_toggle.nix
+  ];
+
   services = {
     xserver = {
       enable = true;
