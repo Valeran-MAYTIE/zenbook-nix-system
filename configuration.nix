@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -28,14 +24,9 @@
     firewall = {
       allowPing = true;
       allowedTCPPorts = [25565];
-      allowedTCPPortRanges = [ {
-        from = 1714;
-	to = 1764;
-      } ];
-      allowedUDPPortRanges = [ { 
-        from = 1714;
-        to = 1764; 
-      } ];
+      allowedUDPPorts = [2000];
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
     };
   };
 
@@ -46,10 +37,10 @@
     keyMap = "fr";
   };
 
+  nixpkgs.overlays = [ (import ./overlays/packages.nix) ];
+
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "20.09";
-
-  nixpkgs.overlays = [ (import ./overlays/packages.nix) ];
 
 }
 

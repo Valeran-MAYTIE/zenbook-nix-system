@@ -14,6 +14,13 @@
   ];
 
   services = {
+
+    ir-toggle.enable = true;
+    howdy = {
+      enable = true;
+      device = "/dev/video2";
+    };
+
     xserver = {
       enable = true;
       layout = "fr";
@@ -21,7 +28,7 @@
 
       libinput.enable = true;
 
-      displayManager.sddm.enable = true;
+      displayManager.lightdm.enable = true;
       desktopManager.plasma5.enable = true;
     };
 
@@ -33,6 +40,18 @@
       enable = true;
       drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     };
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+      dataDir = "/var/db";
+    };
+    mysqlBackup = {
+      enable = true;
+      user = "root";
+      databases = [ "foo" ];
+    };
+
+    longview.mysqlPasswordFile = "/run/keys/mysql.password";
   };
 
   hardware.bluetooth.enable = true;
