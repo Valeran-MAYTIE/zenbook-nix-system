@@ -18,12 +18,22 @@
     };
   };
 
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    permitRootLogin = "no";
+    passwordAuthentication = true;
+  };
+
+  programs.ssh.forwardX11 = true;
+  programs.ssh.setXAuthLocation = true;
+
   networking = {
     hostName = "Valeran-PC";
     networkmanager.enable = true;
     firewall = {
       allowPing = true;
-      allowedTCPPorts = [25565];
+      allowedTCPPorts = [25565 22];
       allowedUDPPorts = [2000];
       allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
       allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
