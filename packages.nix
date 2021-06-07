@@ -63,4 +63,8 @@
     support32Bit = true;
     package = pkgs.pulseaudioFull;
   };
+
+  virtualisation.docker = {
+    enable = true;
+  };
 }
